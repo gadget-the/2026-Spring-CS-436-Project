@@ -1,0 +1,61 @@
+{
+    "USERS": [
+        {
+            "username": "A",
+            "password": "A",
+            "lives": -1,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        },
+        {
+            "username": "B",
+            "password": "B",
+            "lives": -1,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        },
+        {
+            "username": "C",
+            "password": "C",
+            "lives": -1,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        },
+        {
+            "username": "D",
+            "password": "D",
+            "lives": -1,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        }
+    ],
+    "FIGHT_REQUESTS": [
+        {
+            "requester": "",
+            "boss": "",
+            "fighting-item": -1,
+            "fighting-item-strength": -1,
+            "winner": ""
+        }
+    ]
+}
