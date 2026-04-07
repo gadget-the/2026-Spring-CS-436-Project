@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 class warrior():
     username = ""
     password = ""
@@ -48,6 +50,36 @@ class warrior():
             "setup_check": False if ((self.lives <= 0) or (self.sword_strength < 0)) else True
         }
         return output_dict
+    
+    def output_state_as_table(self):
+        print("username")
+        print("lives")
+        print("avatar_image_location")
+        print("sword_strength")
+        print("shield_strength")
+        print("slaying_potion_strength")
+        print("healing_potion_strength")
+        print("active")
 
 if __name__ == "__main__":
+    test_dict = {
+        "username": "A",
+        "password": "A",
+        "lives": -1,
+        "avatar_image_location": "",
+        "sword_strength": -1,
+        "shield_strength": -1,
+        "slaying_potion_strength": -1,
+        "healing_potion_strength": -1,
+        "active": False,
+        "setup_check": False
+    }
+
     w1 = warrior()
+    w1.input_from_dict(test_dict)
+    # w1.output_state_as_table()
+
+    table = [["username", "lives", "sword_strength", "shield_strength", "slaying_potion_strength", "healing_potion_strength", "active"],
+        ["A", 2, -1, -1, -1, -1, False]
+    ]
+    print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
