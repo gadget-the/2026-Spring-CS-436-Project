@@ -12,15 +12,15 @@ class warrior():
     active = False
     
     def __init__(self):
-        username = ""
-        password = ""
-        lives = -1
-        avatar_image_location = ""
-        sword_strength = -1
-        shield_strength = -1
-        slaying_potion_strength = -1
-        healing_potion_strength = -1
-        active = False
+        self.username = ""
+        self.password = ""
+        self.lives = -1
+        self.avatar_image_location = ""
+        self.sword_strength = -1
+        self.shield_strength = -1
+        self.slaying_potion_strength = -1
+        self.healing_potion_strength = -1
+        self.active = False
 
     def input_from_dict(self, input_dict = {}):
         if input_dict == None:
