@@ -3,6 +3,7 @@ import os
 import json
 import base64
 from socket import socket, AF_INET, SOCK_DGRAM
+from tabulate import tabulate
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(CURRENT_DIR)
@@ -19,6 +20,9 @@ class socket_client():
         self.sock.sendto(json.dumps(payload).encode(), self.serverAddr)
         data, _ = self.sock.recvfrom(65536)
         return json.loads(data.decode())
+
+    def pretty_print(self, stat_dict):
+        pass
 
     def run(self):
         print("--- RPG GAME LOGIN ---")
@@ -39,6 +43,8 @@ class socket_client():
         if state.get('lives', 0) <= 0:
             print("GAME OVER for this warrior.")
             return
+        
+        self.pretty_print(state)
 
         # Avatar Upload
         if input("\nDo you want to upload an avatar file? (y/n): ").lower() == 'y':
@@ -94,13 +100,14 @@ class socket_client():
         if input("\nDo you want the server to send the list of confirmed fight requests? (y/n): ").lower() == 'y':
             res = self.talk({"action": "GET_FIGHTS", "username": self.username})
             fights = res.get("fights", [])
+            # print(fights)
             if not fights:
                 print("Empty response.")
             else:
                 print("\n| Requester | Boss | Item | Strength | Winner |")
                 print("-" * 55)
                 for f in fights:
-                    print(f"| {f['requester']:<9} | {f['boss']:<4} | {f['item']:<4} | {f['strength']:<8} | {f['winner']:<6} |")
+                    print(f"| {f['requester']:<9} | {f['boss']:<4} | {f['fighting-item']:<4} | {f['item-strength']:<8} | {f['winner']:<6} |")
 
         # Fight Loop
         while True:

@@ -15,12 +15,20 @@ class socket_server():
         self.serverPort = port
         self.serverSocket = socket(AF_INET, SOCK_DGRAM)
         
+        warrior_list, self.confirmed_fights = self.load_from_file()
+
         # Users: A, B, C, D
-        self.users = {name: warrior(name, name) for name in ["A", "B", "C", "D"]}
+        self.users = {name: warrior() for name in ["A", "B", "C", "D"]}
         for name, u in self.users.items():
-            u.lives = 2 
-            
-        self.confirmed_fights = []
+            u.input_from_dict(warrior_list.get(name))
+
+        # self.users = {name: warrior(name, name) for name in ["A", "B", "C", "D"]}
+        # for name, u in self.users.items():
+        #     u.lives = 2
+
+        # self.confirmed_fights = []
+
+        # self.update_server_file()
 
     def start(self):
         self.serverSocket.bind(('', self.serverPort))
@@ -30,6 +38,7 @@ class socket_server():
             try:
                 message, clientAddress = self.serverSocket.recvfrom(65536)
                 data = json.loads(message.decode())
+                # print(data)
                 action = data.get("action")
                 username = data.get("username", "Unknown")
                 
@@ -83,6 +92,9 @@ class socket_server():
                 
                 user.avatar_image_location = filepath
                 print(f"Avatar for {username} saved to {filepath}")
+                
+                self.update_server_file()
+                
                 return {"status": "success"}
             except Exception as e:
                 return {"status": "fail"}
@@ -94,6 +106,9 @@ class socket_server():
             user.active = True
             print(f"Stats successfully assigned for user {username}.")
             self.print_fancy_table()
+
+            self.update_server_file()
+            
             return {"status": "success"}
 
         elif action == "GET_ACTIVE":
@@ -143,9 +158,31 @@ class socket_server():
 
             self.confirmed_fights.append({"requester": username, "boss": boss_name, "item": item, "strength": val, "winner": winner})
             self.print_fancy_table()
+            
+            self.update_server_file()
+
             return {"status": "success", "state": user.output_as_dict()}
 
         return {"status": "error"}
+    
+    def load_from_file(self):
+        with open('Server\\server_data.json') as f:
+            server_data = json.load(f)
+            # print(server_data)
+
+        return (server_data.get("USERS"), server_data.get("FIGHT_REQUESTS"))
+
+    def update_server_file(self):
+        server_dict = {
+            "USERS": {},
+            "FIGHT_REQUESTS": []
+        }
+
+        server_dict["USERS"] = {name: u.output_as_dict() for name, u in self.users.items()} # warrior list as a dictionary of dictionaries
+        server_dict["FIGHT_REQUESTS"] = self.confirmed_fights
+
+        with open('Server\\server_data.json', 'w') as f:
+            json.dump(server_dict, f)
 
 if __name__ == "__main__":
     server = socket_server()
