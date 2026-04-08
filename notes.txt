@@ -14,4 +14,9 @@ checklist
     (X) client program prompts a message: “You are given 10 strengths”
     (X) The warrior should select how to assign the 10 strengths to its sword, shield, and potions
         (X) used amount of strengths must equal 10, else client rejects and reprompts for strength values
+(X) After a successful assignment... The client will send the warrior’s current state to server, and the sever will store them in its table
+(X) the warrior’s lives is initialized to 2 by default
+    () Each time the warrior defeats another warrior, it will gain a life
+    () Each time a warrior is defeated by another warrior, it will lose one life
+    () when the warrior reaches 0 life, the game is over for this warrior; warrior turns to inactive mode.
 () 

@@ -133,6 +133,7 @@ class socket_server():
             return {"status": "success", "fights": self.confirmed_fights}
 
         elif action == "FIGHT":
+            print(data) # fight doesn't work?; "Server Error: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'"
             boss_name = data.get("target")
             item = data.get("item")
             val = int(data.get("strength"))
@@ -156,7 +157,7 @@ class socket_server():
                 if item == "sword": user.sword_strength -= val; boss.shield_strength -= (boss_def - val)
                 else: user.slaying_potion_strength -= val; boss.healing_potion_strength -= (boss_def - val)
 
-            self.confirmed_fights.append({"requester": username, "boss": boss_name, "item": item, "strength": val, "winner": winner})
+            self.confirmed_fights.append({"requester": username, "boss": boss_name, "fighting-item": item, "item-strength": val, "winner": winner})
             self.print_fancy_table()
             
             self.update_server_file()

@@ -27,9 +27,15 @@ class socket_client():
             "Sword", "Shield", "Slay-Pot", "Heal-Pot", "Lives"))
         print("-" * 70)
 
+        sword_strength = stat_dict.get("sword_strength") if stat_dict.get("sword_strength") > -1 else "unassigned"
+        shield_strength = stat_dict.get("shield_strength") if stat_dict.get("shield_strength") > -1 else "unassigned"
+        slaying_potion_strength = stat_dict.get("slaying_potion_strength") if stat_dict.get("slaying_potion_strength") > -1 else "unassigned"
+        healing_potion_strength = stat_dict.get("healing_potion_strength") if stat_dict.get("healing_potion_strength") > -1 else "unassigned"
+        lives = stat_dict.get("lives") if stat_dict.get("lives") > -1 else "unassigned"
+
         print("{:<7} | {:<8} | {:<10} | {:<10} | {:<5}".format(
-            stat_dict.get("sword_strength"), stat_dict.get("shield_strength"),
-            stat_dict.get("slaying_potion_strength"), stat_dict.get("healing_potion_strength"), stat_dict.get("lives")))
+            sword_strength, shield_strength,
+            slaying_potion_strength, healing_potion_strength, lives))
 
     def run(self):
         print("--- RPG GAME LOGIN ---")
@@ -123,7 +129,7 @@ class socket_client():
             target = input("Enter target warrior username: ")
             item = input("Enter fighting item (sword/slaying-potion): ").lower()
             strength = input("Enter strength: ")
-            res = self.talk({"action": "FIGHT", "username": self.username, "target": target, "item": item, "strength": strength})
+            res = self.talk({"action": "FIGHT", "username": self.username, "target": target, "fighting-item": item, "item-strength": strength})
             if res.get("status") == "success":
                 print("Fight processed successfully!")
             else:

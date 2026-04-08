@@ -1,6 +1,6 @@
 class warrior():
     def __init__(self, username = "", password = ""):
-        self.username = username
+        # self.username = username
         self.password = password
         self.lives = 2
         self.avatar_image_location = ""
@@ -19,7 +19,7 @@ class warrior():
 
     def input_from_dict(self, input_dict):
         if input_dict:
-            self.username = input_dict.get("username", self.username)
+            # self.username = input_dict.get("username", self.username)
             self.password = input_dict.get("password", self.password)
             self.lives = input_dict.get("lives", self.lives)
             self.avatar_image_location = input_dict.get("avatar_image_location", self.avatar_image_location)
@@ -32,7 +32,7 @@ class warrior():
     def output_as_dict(self):
         self.update_activity()
         return {
-            "username": self.username, # might not need the username attr, the way the code is set up
+            # "username": self.username, # might not need the username attr, the way the code is set up
             "password": self.password,
             "lives": self.lives,
             "avatar_image_location": self.avatar_image_location,
