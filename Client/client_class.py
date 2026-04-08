@@ -22,7 +22,14 @@ class socket_client():
         return json.loads(data.decode())
 
     def pretty_print(self, stat_dict):
-        pass
+        print("\n" + "="*70)
+        print("{:<7} | {:<8} | {:<10} | {:<10} | {:<5}".format(
+            "Sword", "Shield", "Slay-Pot", "Heal-Pot", "Lives"))
+        print("-" * 70)
+
+        print("{:<7} | {:<8} | {:<10} | {:<10} | {:<5}".format(
+            stat_dict.get("sword_strength"), stat_dict.get("shield_strength"),
+            stat_dict.get("slaying_potion_strength"), stat_dict.get("healing_potion_strength"), stat_dict.get("lives")))
 
     def run(self):
         print("--- RPG GAME LOGIN ---")
@@ -44,7 +51,7 @@ class socket_client():
             print("GAME OVER for this warrior.")
             return
         
-        self.pretty_print(state)
+        self.pretty_print(state) # display warrior state
 
         # Avatar Upload
         if input("\nDo you want to upload an avatar file? (y/n): ").lower() == 'y':
