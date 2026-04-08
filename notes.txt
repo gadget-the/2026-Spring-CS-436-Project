@@ -1,0 +1,17 @@
+checklist
+(X) client asks the warrior to enter username and password
+(X) client sends the username and password to the server where it's checked
+    (X) If accepted, redirect to the next steps
+    () If rejected, the client asks the warrior to try again
+(X) server checks the warrior’s lives
+    (X) If 0, send message that the game is over for this warrior
+    () If above 0, the server will send the warrior’s current state to the client and the warrior’s info will show up on the screen
+    () If the server sends the value -1 for these items, the client should display “unassigned” for their values
+(X) the warrior can upload a jpg image file as its avatar
+    (X) The file will be stored at a folder on the server with name username.jpg
+    (X) If the warrior has already uploaded an avatar image in the past, a new upload will replace the old one
+(X) sword value == -1 / the warrior is still inactive
+    (X) client program prompts a message: “You are given 10 strengths”
+    (X) The warrior should select how to assign the 10 strengths to its sword, shield, and potions
+        (X) used amount of strengths must equal 10, else client rejects and reprompts for strength values
+() 
