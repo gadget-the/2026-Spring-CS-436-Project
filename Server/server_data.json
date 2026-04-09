@@ -1,1 +1,57 @@
-{"USERS": {"A": {"password": "A", "lives": 2, "avatar_image_location": "C:\\Users\\mario\\Documents\\Programming\\python\\#School\\CS 436\\2026-Spring-CS-436-Project\\Avatars\\A.jpg", "sword_strength": 3, "shield_strength": 3, "slaying_potion_strength": 2, "healing_potion_strength": 2, "active": true}, "B": {"password": "B", "lives": 2, "avatar_image_location": "C:\\Users\\mario\\Documents\\Programming\\python\\#School\\CS 436\\2026-Spring-CS-436-Project\\Avatars\\B.jpg", "sword_strength": 2, "shield_strength": 2, "slaying_potion_strength": 3, "healing_potion_strength": 3, "active": true}, "C": {"password": "C", "lives": 2, "avatar_image_location": "", "sword_strength": -1, "shield_strength": -1, "slaying_potion_strength": -1, "healing_potion_strength": -1, "active": false}, "D": {"password": "D", "lives": 2, "avatar_image_location": "", "sword_strength": -1, "shield_strength": -1, "slaying_potion_strength": -1, "healing_potion_strength": -1, "active": false}}, "FIGHT_REQUESTS": [{"requester": "test", "boss": "test", "fighting-item": -1, "item-strength": -1, "winner": "test"}]}
+{
+    "USERS": {
+        "A" : {
+            "password": "A",
+            "lives": 2,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        },
+        "B" : {
+            "password": "B",
+            "lives": 2,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        },
+        "C" : {
+            "password": "C",
+            "lives": 2,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        },
+        "D" : {
+            "password": "D",
+            "lives": 2,
+            "avatar_image_location": "",
+            "sword_strength": -1,
+            "shield_strength": -1,
+            "slaying_potion_strength": -1,
+            "healing_potion_strength": -1,
+            "active": false,
+            "setup_check": false
+        }
+    },
+    "FIGHT_REQUESTS": [
+        {
+            "requester": "test",
+            "boss": "test",
+            "fighting-item": -1,
+            "item-strength": -1,
+            "winner": "test"
+        }
+    ]
+}

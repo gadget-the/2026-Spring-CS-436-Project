@@ -3,7 +3,7 @@ import os
 import json
 import base64
 from socket import socket, AF_INET, SOCK_DGRAM
-from tabulate import tabulate
+# from tabulate import tabulate
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(CURRENT_DIR)
@@ -129,14 +129,21 @@ class socket_client():
             target = input("Enter target warrior username: ")
             item = input("Enter fighting item (sword/slaying-potion): ").lower()
             strength = input("Enter strength: ")
-            res = self.talk({"action": "FIGHT", "username": self.username, "target": target, "fighting-item": item, "item-strength": strength})
-            if res.get("status") == "success":
-                print("Fight processed successfully!")
+            if (target != self.username) and (item == 'sword' or item == 'slaying-potion') and (strength.isdecimal() and int(strength) > 0):
+                if (item == "sword" and int(strength) <= state.get('sword_strength')) or (item == 'slaying-potion' and int(strength) <= state.get('slaying_potion_strength')): # these if statements could be cleaned up a lil, but otherwise work
+                    res = self.talk({"action": "FIGHT", "username": self.username, "target": target, "fighting-item": item, "item-strength": int(strength)})
+                    
+                    if res.get("status") == "success":
+                        print("Fight processed successfully!")
+                    else:
+                        print("Fight rejected.")
+                else:
+                    print("You do not have enough {:<1} strength for this action.".format(item))
+                
+                if input("Do you want to send a NEW fight request? (y/n): ").lower() != 'y':
+                    break
             else:
-                print("Fight rejected.")
-            
-            if input("Do you want to send a NEW fight request? (y/n): ").lower() != 'y':
-                break
+                print("Invalid input, try again.")
 
         # Final Active Users
         if input("\nDo you want to get a list of active users and their current states? (y/n): ").lower() == 'y':

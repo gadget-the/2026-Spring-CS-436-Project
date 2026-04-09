@@ -16,7 +16,38 @@ checklist
         (X) used amount of strengths must equal 10, else client rejects and reprompts for strength values
 (X) After a successful assignment... The client will send the warrior’s current state to server, and the sever will store them in its table
 (X) the warrior’s lives is initialized to 2 by default
-    () Each time the warrior defeats another warrior, it will gain a life
-    () Each time a warrior is defeated by another warrior, it will lose one life
-    () when the warrior reaches 0 life, the game is over for this warrior; warrior turns to inactive mode.
-() 
+    (X) Each time the warrior defeats another warrior, it will gain a life
+    (X) Each time a warrior is defeated by another warrior, it will lose one life
+    (X) when the warrior reaches 0 life, the game is over for this warrior; warrior turns to inactive mode.
+(X) warrior can request the server to send the list of other active warriors
+    (X) If the user does not want to get a list of other active warriors, the client program will quit
+    (X) If there is no other active warrior, the client program will quit
+(X) the warrior can request to download another active warrior’s avatar file
+(X) the warrior can ask the server to send the list of confirmed fight requests
+    (X) responds with a complete list of confirmed requests
+    (X) it must look like a structured table or list
+(X) warrior can send a fight request to the server
+    (X) In a fight request, the warrior selects another warrior and enters the strengths it wants to use
+    (X) If warrior “A” does not have enough sword strength, the client program will reject this fight request
+    (X) Otherwise, the request will be sent to the server.
+() When the server receives a fight request, it first checks whether the warrior has enough strength according to the warrior’s info on the server
+    () If not, it will reject the fight request.
+    (X) Otherwise, it confirms the request and stores it in the list 
+    (X) Then, the server compares the requested strength of warrior A with the according strength of warrior B.
+        (X) server will update the lives and strengths of A and B
+        (X) Then, it responds to A with A’s current state
+(X) Then, the warrior can send a new fight request
+(X) The user can request to get a list of active warriors and their current state from the server
+    (X) Then the server will send all info on all active warriors, and the complete info will show up on the screen for the user
+    (X) as a structured table or list
+(X) After that, the client program will quit the game with no further question.
+(X) If the client program quits, the warrior’s state will remain in the server’s table and can be accessed the next time the warrior runs the client program and logs in.
+(X) Whenever the server receives or sends a message, it should prompt a message on the screen and report what it is doing
+
+Submit a zip file containing the following files(it's okay to have more):
+    1. client.py
+    2. server.py
+    3. Report.docx
+        In the Report file enter the names of team members and the screenshots of each step of test
+    
+    Put all the files in a folder named YourTeamMembers and compress it into a .zip file

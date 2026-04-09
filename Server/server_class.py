@@ -133,10 +133,10 @@ class socket_server():
             return {"status": "success", "fights": self.confirmed_fights}
 
         elif action == "FIGHT":
-            print(data) # fight doesn't work?; "Server Error: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'"
             boss_name = data.get("target")
-            item = data.get("item")
-            val = int(data.get("strength"))
+            item = data.get("fighting-item")
+            val = int(data.get("item-strength"))
+            # print(data) # fight doesn't work?; "Server Error: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'"
             boss = self.users.get(boss_name)
 
             boss_def = boss.shield_strength if item == "sword" else boss.healing_potion_strength
